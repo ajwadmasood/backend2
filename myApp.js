@@ -8,8 +8,8 @@ console.log('Hello World')
 //   })
 
 absolutePath = __dirname + /views/index.html
-
-app.get('/', absolutePath)
+// /Users/ajwadmasood/Desktop/boilerplate-express/views/index.html
+app.get('/', /Users/ajwadmasood/Desktop/boilerplate-express/views/index.html)
 
 
 
