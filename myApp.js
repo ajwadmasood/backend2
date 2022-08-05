@@ -1,5 +1,6 @@
 let express = require('express');
 let app = express();
+const path = require('path')
 // const http = require('http')
 // const server = http.createServer()
 
@@ -9,10 +10,11 @@ let app = express();
 //     res.send("Hello Express");
 //   })
 
-// absolutePath = __dirname + relativePath/file.ext
+// absolutePath = __dirname + /views/index.html
+const absolute = path.resolve(__dirname, 'views', 'index.html')
 
 app.get('/',function(req, res) {
-    res.sendFile('/Users/ajwadmasood/Desktop/boilerplate-express/views/index.html');
+    res.sendFile(absolute);
   })
 // app.get('/', '/Users/ajwadmasood/Desktop/boilerplate-express/views/index.html')
 
