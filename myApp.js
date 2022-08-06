@@ -26,7 +26,7 @@ app.get('/json',function(req, res) {
         console.log('dscd')
         return res.json({"message": "Hello json".toUpperCase()});
     }
-    res.json({"message": "Hello json"});
+    // res.json({"message": "Hello json"});
   })
 
 // if (process.env.MESSAGE_STYLE=='uppercase'){
@@ -35,7 +35,7 @@ app.get('/json',function(req, res) {
 //     });
 // }
 
-// app.listen(5000)
+app.listen(5000)
 
 
 
