@@ -20,6 +20,10 @@ app.get('/',function(req, res) {
   })
 // app.get('/', '/Users/ajwadmasood/Desktop/boilerplate-express/views/index.html')
 
+app.get('/json',function(req, res) {
+    res.json({"message": "Hello json"});
+  })
+
 // app.listen(5000)
 
 
