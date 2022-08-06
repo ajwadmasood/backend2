@@ -1,9 +1,10 @@
 let express = require('express');
 let app = express();
 const path = require('path')
-// const http = require('http')
-// const server = http.createServer()
 
+app.use('/public',express.static(path.resolve(__dirname, 'public')))
+// app.use(express.static('/Users/ajwadmasood/Desktop/boilerplate-express/public'));
+// app.use('/public', express.static('./public'));
 // console.log('Hello World')
 
 // app.get('/',function(req, res) {
@@ -12,6 +13,7 @@ const path = require('path')
 
 // absolutePath = __dirname + /views/index.html
 const absolute = path.resolve(__dirname, 'views', 'index.html')
+
 
 app.get('/',function(req, res) {
     res.sendFile(absolute);
