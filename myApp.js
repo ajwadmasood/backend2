@@ -3,14 +3,27 @@ let app = express();
 const path = require('path')
 require('dotenv').config();
 
-const logger = (req, res, next) => {
-    const method = req.method
-    const path = req.path
-    const ip = req.ip
-    console.log(method, path, "-",ip)
-    next()
-  }
-app.use(logger)
+// const logger = (req, res, next) => {
+//     const method = req.method
+//     const path = req.path
+//     const ip = req.ip
+//     console.log(method, path, "-",ip)
+//     next()
+//   }
+// app.use(logger)
+
+app.get('/now', function(req, res, next) {
+    req.time = new Date().toString()
+    next();
+  }, function(req, res,next) {
+    res.send({time: req.time});
+    
+    // next();
+//   }, function(req, res) {
+//     // res.send({ip: req.ip});
+//     console.log(2)
+//   }
+  });
 
 app.use('/public',express.static(path.resolve(__dirname, 'public')))
 // app.use(express.static('/Users/ajwadmasood/Desktop/boilerplate-express/public'));
@@ -37,7 +50,7 @@ app.get('/json',function(req, res) {
   })
 
 
-// app.listen(5000)
+app.listen(5000)
 
 
 
