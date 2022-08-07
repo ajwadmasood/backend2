@@ -64,6 +64,11 @@ app.get('/name', function(req,res){
     res.json({ name: `${first} ${last}`})
 })
 
+app.post('/name', function(req,res){
+    const { first, last } = req.body
+    res.json({ name: `${first} ${last}`})
+})
+
 app.listen(5000)
 
 
