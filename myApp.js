@@ -7,7 +7,7 @@ const logger = (req, res, next) => {
     const method = req.method
     const path = req.path
     const ip = req.ip
-    console.log(method, path, ip)
+    console.log(method, path, "-",ip)
     next()
   }
 app.use(logger)
@@ -37,7 +37,7 @@ app.get('/json',function(req, res) {
   })
 
 
-app.listen(5000)
+// app.listen(5000)
 
 
 
