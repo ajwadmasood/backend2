@@ -2,6 +2,7 @@ let express = require('express');
 let app = express();
 const path = require('path')
 require('dotenv').config();
+const bodyParser = require('body-parser')
 
 // const logger = (req, res, next) => {
 //     const method = req.method
@@ -11,6 +12,10 @@ require('dotenv').config();
 //     next()
 //   }
 // app.use(logger)
+
+app.use('/public',express.static(path.resolve(__dirname, 'public')))
+
+app.use(bodyParser.urlencoded({extended: false}))
 
 app.get('/now', function(req, res, next) {
     req.time = new Date().toString()
@@ -25,7 +30,7 @@ app.get('/now', function(req, res, next) {
 //   }
   });
 
-app.use('/public',express.static(path.resolve(__dirname, 'public')))
+
 // app.use(express.static('/Users/ajwadmasood/Desktop/boilerplate-express/public'));
 // app.use('/public', express.static('./public'));
 // console.log('Hello World')
