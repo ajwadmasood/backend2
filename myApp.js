@@ -54,6 +54,11 @@ app.get('/:word/echo', function(req,res){
     res.json({echo: word})
 })
 
+app.get('/name', function(req,res){
+    const { first, last } = req.query
+    res.json({ name: `${first} ${last}`})
+})
+
 app.listen(5000)
 
 
