@@ -49,6 +49,10 @@ app.get('/json',function(req, res) {
     res.json({"message": "Hello json"});
   })
 
+app.get('/:word/echo', function(req,res){
+    const { word } = req.params;
+    res.json({echo: word})
+})
 
 app.listen(5000)
 
