@@ -4,7 +4,7 @@ const path = require('path')
 require('dotenv').config();
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
-mongoose.connect('mongodb+srv://ajwadmasood:Blackberry-1@nodeexpressprojects.e7cx3sw.mongodb.net/freecodecamp?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 // const logger = (req, res, next) => {
 //     const method = req.method
