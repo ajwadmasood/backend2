@@ -3,6 +3,8 @@ let app = express();
 const path = require('path')
 require('dotenv').config();
 const bodyParser = require('body-parser')
+const mongoose = require('mongoose')
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 // const logger = (req, res, next) => {
 //     const method = req.method
@@ -69,7 +71,7 @@ app.post('/name', function(req,res){
     res.json({ name: `${first} ${last}`})
 })
 
-app.listen(5000)
+// app.listen(5000)
 
 
 
