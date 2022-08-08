@@ -8,20 +8,20 @@ const Task = require('./models/Task')
 
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
-//   const asyncWrapper = (fn) => {
-//     return async (req, res, next) => {
-//       try {
-//         await fn(req, res, next)
-//       } catch (error) {
-//         next(error)
-//       }
-//     }
-//   }
+  const asyncWrapper = (fn) => {
+    return async (req, res, next) => {
+      try {
+        await fn(req, res, next)
+      } catch (error) {
+        next(error)
+      }
+    }
+  }
 
-//   const getAllTasks = asyncWrapper(async (req, res) => {
-//     const mongoDB = await Task.find({})
-//     res.status(200).json({ mongoDB })
-//   })
+  const getAllTasks = asyncWrapper(async (req, res) => {
+    const mongoDB = await Task.find({})
+    res.status(200).json({ mongoDB })
+  })
 
 // const logger = (req, res, next) => {
 //     const method = req.method
@@ -49,7 +49,7 @@ app.get('/now', function(req, res, next) {
 //   }
   });
 
-// app.get('/db', getAllTasks)
+app.get('/db', getAllTasks)
 
 
 // app.use(express.static('/Users/ajwadmasood/Desktop/boilerplate-express/public'));
