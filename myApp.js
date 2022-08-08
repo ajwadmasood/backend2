@@ -4,7 +4,27 @@ const path = require('path')
 require('dotenv').config();
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
-mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+
+const connectDB = (url) => {
+    return mongoose.connect(url, {
+      useNewUrlParser: true,
+      useCreateIndex: true,
+      useFindAndModify: false,
+      useUnifiedTopology: true,
+    })
+  }
+
+  const start = async () => {
+    try {
+      await connectDB(process.env.MONGO_URI);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  
+  start();
+
+// mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 // const logger = (req, res, next) => {
 //     const method = req.method
