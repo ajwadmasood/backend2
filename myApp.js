@@ -4,27 +4,24 @@ const path = require('path')
 require('dotenv').config();
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
+const Task = require('./models/Task')
 
-const connectDB = (url) => {
-    return mongoose.connect(url, {
-      useNewUrlParser: true,
-      useCreateIndex: true,
-      useFindAndModify: false,
-      useUnifiedTopology: true,
-    })
-  }
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
-  const start = async () => {
-    try {
-      await connectDB(process.env.MONGO_URI);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  
-  start();
+//   const asyncWrapper = (fn) => {
+//     return async (req, res, next) => {
+//       try {
+//         await fn(req, res, next)
+//       } catch (error) {
+//         next(error)
+//       }
+//     }
+//   }
 
-// mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+//   const getAllTasks = asyncWrapper(async (req, res) => {
+//     const mongoDB = await Task.find({})
+//     res.status(200).json({ mongoDB })
+//   })
 
 // const logger = (req, res, next) => {
 //     const method = req.method
@@ -51,6 +48,8 @@ app.get('/now', function(req, res, next) {
 //     console.log(2)
 //   }
   });
+
+// app.get('/db', getAllTasks)
 
 
 // app.use(express.static('/Users/ajwadmasood/Desktop/boilerplate-express/public'));
